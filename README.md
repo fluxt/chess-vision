@@ -2,7 +2,7 @@
 
 In online chess websites, when spectating bullet chess, such as 1+0 time control, it is often hard to guage the engine analysis because they tend to be in algebraic notation. By taking a screenshot of the image, extracting the FEN through TensorFlow, and visualizing the engine analysis through various opacities, we can predict potentially playable moves.
 
-![](https://github.com/fluxt/chess-vision/blob/master/figures/demo.png)
+![](https://github.com/fluxt/chess-vision/blob/main/figures/demo.png?raw=true)
 
 ## Credits
 
