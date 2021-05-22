@@ -34,14 +34,14 @@ def score2num(score):
 
 def calc_pl(eval, board):
     # lambda(eval), lambda(-5)=2.6, lambda(0) = 0.5, lambda(5)=3.6
-    strength = 0
+    weakness = 0
     if eval >= 0:
-        strength = 0.5+0.60*np.clip(np.abs(eval), 0.0, 10.0)
+        weakness = 0.5+0.60*np.clip(np.abs(eval), 0.0, 7.5)
     else:
-        strength = 0.5+0.40*np.clip(np.abs(eval), 0.0, 10.0)
+        weakness = 0.5+0.40*np.clip(np.abs(eval), 0.0, 7.5)
     num_pieces = len(board.piece_map())
-    strength = strength * (1.0-0.3*expit((num_pieces-8)/2)) * 1.5
-    return strength
+    weakness = weakness * (1.0-0.3*expit((num_pieces-8)/2)) * 2.2
+    return weakness
 
 def svg2surface(svg):
     format_to_dtype = {
@@ -99,8 +99,8 @@ class Visualizer():
             scores = np.array([score2num(s.relative) if s else -9999 for s in scores]) / 100
             eval = scores[0]
             scores_diff = scores - eval
-            scores_diff = np.exp(scores_diff / calc_pl(eval, board)) * 0.7
-            scores_diff = np.clip(scores_diff, 0.0, 0.7)
+            scores_diff = np.exp(scores_diff / calc_pl(eval, board)) * 0.8
+            scores_diff = np.clip(scores_diff, 0.0, 0.8)
             for info, opacity in zip(multipv[:24], scores_diff[:24]):
                 score = info.get("score")
                 pv = info.get("pv")
