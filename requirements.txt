@@ -1,0 +1,10 @@
+chess
+joblib
+numpy
+pillow
+pygame
+pyperclip
+pyvips
+scikit-learn
+scipy
+tensorflow
